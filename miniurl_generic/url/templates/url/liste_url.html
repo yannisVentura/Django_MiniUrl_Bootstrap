@@ -1,109 +1,72 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>Liste d'url</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="/static/js/jquery-2.2.1.js"></script>
-        <script src="/static/js/bootstrap.js"></script>
-    </head>
-    <body class="row col-md-12">
-        <h1>Ma liste d'urls</h1>
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"> <a href="{% url 'url_field' %}">Ajouter une url</a> </li>
-            <li role="presentation" class="active"> <a href="{% url 'all_url' %}">Liste d'url</a> </li>
-        </ul>
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
+<head>
+    <meta charset="utf-8">
+    <title>Liste d'url</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles.css" >
+</head>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Ajouter une url</h4>
-      </div>
-      <div class="modal-body">
-         <div id="create-miniurl-view">
-         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-    $(document).ready(function () {
-        $.ajax(url="{% url 'create-miniurl' %}").done(function (response) {
-            $('#create-miniurl-view').html(response)
-        })
-    })
-</script>
-
-
-
-
-
-
-
-
-
-
-        <div class="jumbotron col-md-12">
-            <h1>Mini-Url</h1>
-            <p>
-                Mini URL est un simple réducteur d'url développé à partir de Django ( back-end ) et de Bootstrap ( Front-end ).
-            </p>
-            <div class="container">
-                <div class="col-md-6 col-md-push-3">
-                        <a class="btn btn-success btn-lg" href="https://www.djangoproject.com/" role="button">Django</a>
-                        <a class="btn btn-primary btn-lg" href="http://getbootstrap.com/" role="button">Bootstrap</a>
-                </div>
+<body class="row col-md-12">
+    {%include 'url/ui/navbar.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center text-danger">Mini URL</h1>
             </div>
         </div>
-
-        <div class="panel panel-default">
-            <div class="pannel-body">
-        </div>
-            
-            <table class="table">
-                <tr>
-                    <td>url complete</td>
-                    <td>pseudo</td>
-                    <td>url racourcis</td>
-                    <td>date de creation</td>
-                    <td> nombre d'acces</td>
-                </tr>
-                {% for urls in liste %}
-                    <tr>
-                        <td>{{urls.url_complete}}</td>
-                        <td>{{urls.pseudo}} </td>
-                        <td><a href="http://127.0.0.1:8000/mini_url/acces/{{urls.code}}"> http://127.0.0.1:8000/mini_url/acces/{{urls.code}} </a> </td>
-                        <td>{{urls.date_creation}}</td>
-                        <td>{{urls.nb_acces}}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-
-        {%if is_paginated%}
-            <div class="pagination">
-                {% if page_obj.has_next or page_obj.has_previous %}
-                    <div class="btn-toolbar">
-                         <div class="btn-group" role="group">
-                            {% for num in page_obj.paginator.page_range %}
-                                <a class="btn btn-default" type="button" href="?page={{num}}">{{num}}</a>
+        <div class="row">
+            <div class="col-lg-offset-0 col-md-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody class="url_table">
+                            <tr>
+                                <td>
+                                    <b>complete url</b>
+                                </td>
+                                <td>
+                                    <b>pseudo</b>
+                                </td>
+                                <td>
+                                    <b>shortcut</b>
+                                </td>
+                                <td>
+                                    <b>Created</b>
+                                </td>
+                                <td>
+                                    <b>Access</b>
+                                </td>
+                            </tr>
+                            {% for urls in liste %}
+                            <tr>
+                                <td>{{urls.url_complete}}</td>
+                                <td>{{urls.pseudo}}</td>
+                                <td><a href="http://127.0.0.1:8000/mini_url/acces/{{urls.code}}" target="_blank"> http://127.0.0.1:8000/mini_url/acces/{{urls.code}}</a> </td>
+                                <td>{{urls.date_creation}}</td>
+                                <td>{{urls.nb_acces}}</td>
+                            </tr>
                             {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {%if is_paginated%}
+                <div class="pagination">
+                    {% if page_obj.has_next or page_obj.has_previous %}
+                    <div class="btn-toolbar">
+                        <div class="btn-group" role="group">
+                            {% for num in page_obj.paginator.page_range %}
+                            <a class="btn btn-default" type="button" href="?page={{num}}">{{num}}</a> {% endfor %}
                         </div>
                     </div>
+                {%endif%} {%endif%}
+                </div>
+            </div>
+            <a href="{%url 'mini_url:create-miniurl'%}" ><button class="btn btn-success btn-lg btn-block" type="button" >Create url</button> </a>
 
-                {%endif%}
-        {%endif%}
-    </body>
+<script src="/static/js/jquery-2.2.1.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+
 </html>
 
 

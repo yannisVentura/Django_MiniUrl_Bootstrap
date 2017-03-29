@@ -8,7 +8,7 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.core.urlresolvers import reverse_lazy
 
 
-
+"""
 def url_view(request):
     if (request.method == 'POST'):
         form = UrlForm(request.POST)
@@ -22,7 +22,7 @@ def url_view(request):
     else:
         form = UrlForm()
     return render(request,'url/liste_url.html',locals())       
-
+"""
 """
 def all_redirect_view(request):
     liste = MiniUrl.objects.order_by('date_creation')
@@ -55,7 +55,7 @@ class ListRedirection_view(ListView):
     model = MiniUrl
     context_object_name = "liste"
     template_name="url/liste_url.html"
-    paginate_by=2
+    paginate_by=20
     
 
 class CreateUrlView(CreateView):

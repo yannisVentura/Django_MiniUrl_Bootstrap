@@ -1,13 +1,33 @@
-<div class="page-haeder"> 
-    <h1>About</h1>
-</div>
+<!DOCTYPE html>
+<html>
 
-<div>
-    <p>
-        
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Mini URL</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
 
-    </p>
-
-</div>
-
-
+<body>
+    {%include 'url/ui/navbar.html' %}
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <h1 class="text-danger">About </h1>
+                        <p class="text-center">Mini url is a simple url shortner developped with Python / Django and Bootstrap.</p>
+                        <p><a class="btn btn-default" role="button" href="https://www.djangoproject.com/foundation/" target="_blank">Django </a>
+                            <a class="btn btn-default" role="button" href="http://getbootstrap.com/" target="_blank">Bootstrap </a>
+                            <a class="btn btn-default" role="button" href="https://github.com/yannisVentura/Django_MiniUrl_Bootstrap" target="_blank">Github </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</html>
