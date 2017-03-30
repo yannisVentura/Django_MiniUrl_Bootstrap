@@ -19,4 +19,6 @@ To lauchn Mini url server procced as the following :
   1. Open the project folder with your terminal.
   2. Execute ```python manage.py runserver [port]```
   3. Open your webrowser with the following url : ```http://127.0.0.1:[your_port]/mini_url/home/```
-    
+
+See the home page:
+![alt tag](img/home page.JPG)
