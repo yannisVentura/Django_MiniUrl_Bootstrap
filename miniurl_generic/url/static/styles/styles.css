@@ -1,5 +1,5 @@
 body {
-  background-image:url(../../assets/img/mini_2.jpg);
+  background-image:url("../../static/img/mini_2.jpg");
 }
 
 h1.text-center.text-danger {
@@ -15,3 +15,7 @@ h1.text-center.text-danger {
   background-color:white;
 }
 
+.register-url {
+    background-color:white;
+    border-radius: 10px;
+}

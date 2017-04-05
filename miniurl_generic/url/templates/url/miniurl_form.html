@@ -1,24 +1,29 @@
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>Liste d'url</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="/static/styles.css" >
-    </head>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Create a shortcut</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
 
-    <body>
-        {%include 'url/ui/navbar.html' %}
-        <div class="center-block">
-            <form id="miniurl-form" action=""method="post" class="col-md-12">
-                <div class="form-group">
+<body>
+{%include 'url/ui/navbar.html' %}
+<div class="register-url col-md-4 col-md-offset-4">
+    <div class="form-container">
+        <form method="post" action="">
+            <h2 class="text-center">Create an url shortcut</h2>
+            <div class="form-group">
                 {% csrf_token %}
                 {{form.as_p}}
-                <button class="btn btn-success">Submit</button>
-                </div>
-            </form>
-        </div>
-    </body>
-    <script src="/static/js/jquery-2.2.1.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
+                <input type="submit" value="Submit" class="pull-right btn btn-success"/>
+                <br>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/static/js/jquery-2.2.1.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+
 </html>
