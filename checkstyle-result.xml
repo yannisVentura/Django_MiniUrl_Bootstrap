@@ -1,2 +1,8 @@
 <checkstyle version="1.4.3">
+  <module name="Checker">
+    <property name="charset" value="UTF-8"/>
+    <property name="severity" value="warning"/>
+  </module>
+  
+  
 </checkstyle>
