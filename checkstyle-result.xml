@@ -1,9 +1,7 @@
 <checkstyle version="1.4.3">
-  <module name="Checker">
+  <module name="miniurl_generic/url/">
     <property name="charset" value="UTF-8"/>
     <property name="severity" value="warning"/>
     <property name="fileExtensions" value="python, xml"/>
   </module>
-  
-  
 </checkstyle>
