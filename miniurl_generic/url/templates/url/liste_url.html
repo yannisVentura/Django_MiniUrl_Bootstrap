@@ -4,85 +4,80 @@
 <head>
     <meta charset="utf-8">
     <title>Mini Url Homel</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/styles/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
 {%include 'url/ui/navbar.html' %}
+
 <body class="row col-md-12">
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center text-danger">Mini URL</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center text-danger">Mini URL</h1>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-offset-0 col-md-12">
-            <div class="table-responsive">
-                <table class="table">
-                    <tbody class="url_table">
-                    <tr>
-                        <td>
-                            <b>complete url</b>
-                        </td>
-                        <td>
-                            <b>pseudo</b>
-                        </td>
-                        <td>
-                            <b>shortcut</b>
-                        </td>
-                        <td>
-                            <b>Created</b>
-                        </td>
-                        <td>
-                            <b>Access</b>
-                        </td>
-                    </tr>
-                    {% for urls in liste %}
-                    <tr>
-                        <td>{{urls.url_complete}}</td>
-                        <td>{{urls.pseudo}}</td>
-                        <td><a href="http://127.0.0.1:8000/mini_url/acces/{{urls.code}}" target="_blank">
+        <div class="row">
+            <div class="col-lg-offset-0 col-md-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody class="url_table">
+                            <tr>
+                                <td>
+                                    <b>complete url</b>
+                                </td>
+                                <td>
+                                    <b>pseudo</b>
+                                </td>
+                                <td>
+                                    <b>shortcut</b>
+                                </td>
+                                <td>
+                                    <b>Created</b>
+                                </td>
+                                <td>
+                                    <b>Access</b>
+                                </td>
+                            </tr>
+                            {% for urls in liste %}
+                            <tr>
+                                <td>{{urls.url_complete}}</td>
+                                <td>{{urls.pseudo}}</td>
+                                <td><a href="http://127.0.0.1:8000/mini_url/acces/{{urls.code}}" target="_blank">
                             http://127.0.0.1:8000/mini_url/acces/{{urls.code}}</a></td>
-                        <td>{{urls.date_creation}}</td>
-                        <td>{{urls.nb_acces}}</td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            {%if is_paginated%}
-            <div class="pagination">
-                {% if page_obj.has_next or page_obj.has_previous %}
-                <div class="btn-toolbar">
-                    <div class="btn-group" role="group">
-                        {% for num in page_obj.paginator.page_range %}
-                        <a class="btn btn-default" type="button" href="?page={{num}}">{{num}}</a> {% endfor %}
-                    </div>
+                                <td>{{urls.date_creation}}</td>
+                                <td>{{urls.nb_acces}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-                {%endif%} {%endif%}
+                {%if is_paginated%}
+                <div class="pagination">
+                    {% if page_obj.has_next or page_obj.has_previous %}
+                    <div class="btn-toolbar">
+                        <div class="btn-group" role="group">
+                            {% for num in page_obj.paginator.page_range %}
+                            <a class="btn btn-default" type="button" href="?page={{num}}">{{num}}</a> {% endfor %}
+                        </div>
+                    </div>
+                    {%endif%} {%endif%}
+                </div>
             </div>
-        </div>
-        <a href = "{%url 'mini_url:create-miniurl'%}">
-            <button type="button" class="btn btn-success btn-lg btn-block">
+            <a href="{%url 'mini_url:create-miniurl'%}">
+                <button type="button" class="btn btn-success btn-lg btn-block">
                 Create new url
             </button>
-        </a>
+            </a>
 
-        <script src="/static/js/jquery-2.2.1.js"></script>
-        <script src="/static/js/bootstrap.js"></script>
+            <script src="/static/js/jquery-2.2.1.js"></script>
+            <script src="/static/js/bootstrap.js"></script>
 
-        <script>
-                $(document).ready(function () {
-                    $.ajax(url="{% url 'mini_url:create-miniurl' %}").done(function (response) {
+            <script>
+                $(document).ready(function() {
+                    $.ajax(url = "{% url 'mini_url:create-miniurl' %}").done(function(response) {
                         $('#create-miniurl-view').html(response)
                     })
                 })
-        </script>
+            </script>
+
 </html>
-
-
-
-
-

@@ -1,21 +1,17 @@
-body {
-  background-image:url("../../static/img/mini_2.jpg");
-}
-
 h1.text-center.text-danger {
-  color:red;
-  font-family:'Trocchi', serif;
-  font-size:45px;
-  font-weight:normal;
-  line-height:48px;
-  margin:0;
+    color: red;
+    font-family: 'Trocchi', serif;
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0;
 }
 
 .url_table {
-  background-color:white;
+    background-color: white;
 }
 
 .register-url {
-    background-color:white;
+    background-color: white;
     border-radius: 10px;
 }

@@ -1,15 +1,14 @@
-
-.modalDialog{
-	position: fixed;
-	font-family: Arial, Helvetia, sans-serif;
-	top:0;
-	right:0;
-	bottom:0;
-	left:0;
-	z-index: 9999;
-	opacity: 90;
-	-webkit-transition: opacity 400ms ease-in;
-	-moz-transition: opacity 400ms ease-in;
-	transition: opacity 400ms ease-in;
-	pointer-events: none;
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetia, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    opacity: 90;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
 }
