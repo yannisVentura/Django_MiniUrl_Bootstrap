@@ -4,6 +4,10 @@ from django.db import models
 
 
 class MiniUrl(models.Model):
+    """
+        Define an MiniUrl object.
+        A url will be defined by a complete url, a code, a creation date, a pseudo and the number of acess to this url
+    """
     url_complete = models.URLField(max_length=255, unique=True)
     code = models.IntegerField(unique=True, default=0)
     date_creation = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='Date de parution')
